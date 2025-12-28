@@ -2,8 +2,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import FormCardComponent from "@/components/feature/auth/FormCard";
 import ForgotPasswordForm from "@/components/feature/auth/ForgotPasswordForm";
-import { AUTH_ROUTES } from "@/components/feature/auth/constants/routes";
-import { AUTH_MESSAGES } from "@/components/feature/auth/constants/messages";
+import { AUTH_ROUTES } from "@/app/constants/routes";
+import { AUTH_MESSAGES } from "@/app/constants/messages";
 
 export default function ForgotPasswordPage() {
   return (

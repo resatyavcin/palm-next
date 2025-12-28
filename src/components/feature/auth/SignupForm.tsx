@@ -2,16 +2,22 @@
 
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
+import { Spinner } from "@/components/ui/spinner";
 import { useSignupForm } from "./hooks/useSignupForm";
 import { FormField } from "./FormField";
-import { AUTH_MESSAGES } from "./constants/messages";
+import { AUTH_MESSAGES } from "@/app/constants/messages";
 
 export default function SignupForm() {
   const {
     register,
-    onSubmit,
+    handleSubmit,
     formState: { errors, isSubmitting },
   } = useSignupForm();
+
+  const onSubmit = handleSubmit(async (data) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log("Signup Form Data:", data);
+  });
 
   return (
     <form onSubmit={onSubmit}>
@@ -45,9 +51,14 @@ export default function SignupForm() {
       </CardContent>
       <CardFooter className="flex flex-col gap-2 pt-6">
         <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting
-            ? AUTH_MESSAGES.buttons.signup.submitting
-            : AUTH_MESSAGES.buttons.signup.default}
+          {isSubmitting ? (
+            <>
+              <Spinner />
+              {AUTH_MESSAGES.buttons.signup.submitting}
+            </>
+          ) : (
+            AUTH_MESSAGES.buttons.signup.default
+          )}
         </Button>
       </CardFooter>
     </form>

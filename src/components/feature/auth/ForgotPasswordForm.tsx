@@ -2,16 +2,22 @@
 
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
+import { Spinner } from "@/components/ui/spinner";
 import { useForgotPasswordForm } from "./hooks/useForgotPasswordForm";
 import { FormField } from "./FormField";
-import { AUTH_MESSAGES } from "./constants/messages";
+import { AUTH_MESSAGES } from "@/app/constants/messages";
 
 export default function ForgotPasswordForm() {
   const {
     register,
-    onSubmit,
+    handleSubmit,
     formState: { errors, isSubmitting },
   } = useForgotPasswordForm();
+
+  const onSubmit = handleSubmit(async (data) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log("Forgot Password Form Data:", data);
+  });
 
   return (
     <form onSubmit={onSubmit}>
@@ -29,12 +35,16 @@ export default function ForgotPasswordForm() {
       </CardContent>
       <CardFooter className="flex flex-col gap-2 pt-6">
         <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting
-            ? AUTH_MESSAGES.buttons.forgotPassword.submitting
-            : AUTH_MESSAGES.buttons.forgotPassword.default}
+          {isSubmitting ? (
+            <>
+              <Spinner />
+              {AUTH_MESSAGES.buttons.forgotPassword.submitting}
+            </>
+          ) : (
+            AUTH_MESSAGES.buttons.forgotPassword.default
+          )}
         </Button>
       </CardFooter>
     </form>
   );
 }
-

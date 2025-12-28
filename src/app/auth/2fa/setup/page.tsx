@@ -2,8 +2,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import FormCardComponent from "@/components/feature/auth/FormCard";
 import TwoFactorSetup from "@/components/feature/auth/TwoFactorSetup";
-import { AUTH_ROUTES } from "@/components/feature/auth/constants/routes";
-import { AUTH_MESSAGES } from "@/components/feature/auth/constants/messages";
+import { AUTH_ROUTES } from "@/app/constants/routes";
+import { AUTH_MESSAGES } from "@/app/constants/messages";
 
 // This would normally come from your backend/API
 // For demo purposes, we're using a sample QR code value
@@ -29,4 +29,3 @@ export default function TwoFactorSetupPage() {
     />
   );
 }
-

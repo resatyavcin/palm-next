@@ -14,6 +14,11 @@ export const AUTH_MESSAGES = {
       description:
         "Enter your email address and we'll send you a link to reset your password",
     },
+    resetPasswordSent: {
+      title: "Check your email",
+      description:
+        "We've sent a password reset link to your email address. Please check your inbox and follow the instructions.",
+    },
     twoFactorSetup: {
       title: "Set up Two-Factor Authentication",
       description: "Scan the QR code with your authenticator app to enable 2FA",
@@ -75,10 +80,16 @@ export const AUTH_MESSAGES = {
     backToSignIn: "Back to Sign In",
     backToSetup: "Back to Setup",
     cancel: "Cancel",
+    backToLogin: "Back to Login",
+    resendLink: "Resend Link",
   },
 
   // Helper texts
   helpers: {
+    resetPasswordSent: {
+      noEmailReceived:
+        "Didn't receive the email? Check your spam folder or try resending.",
+    },
     twoFactorSetup: {
       scanInstructions:
         "Scan this QR code with your authenticator app (Google Authenticator, Authy, etc.)",

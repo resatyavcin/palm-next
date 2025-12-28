@@ -7,13 +7,5 @@ export function useSignupForm() {
     resolver: zodResolver(signupSchema),
   });
 
-  const onSubmit = (data: SignupFormData) => {
-    console.log("Signup Form Data:", data);
-  };
-
-  return {
-    ...form,
-    onSubmit: form.handleSubmit(onSubmit),
-  };
+  return form;
 }
-

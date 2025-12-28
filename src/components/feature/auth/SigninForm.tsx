@@ -3,17 +3,23 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
+import { Spinner } from "@/components/ui/spinner";
 import { useSigninForm } from "./hooks/useSigninForm";
 import { FormField } from "./FormField";
-import { AUTH_ROUTES } from "./constants/routes";
-import { AUTH_MESSAGES } from "./constants/messages";
+import { AUTH_ROUTES } from "@/app/constants/routes";
+import { AUTH_MESSAGES } from "@/app/constants/messages";
 
 export default function SigninForm() {
   const {
     register,
-    onSubmit,
+    handleSubmit,
     formState: { errors, isSubmitting },
   } = useSigninForm();
+
+  const onSubmit = handleSubmit(async (data) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log("Signin Form Data:", data);
+  });
 
   return (
     <form onSubmit={onSubmit}>
@@ -47,9 +53,14 @@ export default function SigninForm() {
       </CardContent>
       <CardFooter className="flex flex-col gap-2 pt-6">
         <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting
-            ? AUTH_MESSAGES.buttons.signin.submitting
-            : AUTH_MESSAGES.buttons.signin.default}
+          {isSubmitting ? (
+            <>
+              <Spinner />
+              {AUTH_MESSAGES.buttons.signin.submitting}
+            </>
+          ) : (
+            AUTH_MESSAGES.buttons.signin.default
+          )}
         </Button>
       </CardFooter>
     </form>

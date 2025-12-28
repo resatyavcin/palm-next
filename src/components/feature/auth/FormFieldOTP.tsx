@@ -1,5 +1,11 @@
 import * as React from "react";
-import { Controller, Control, FieldError, FieldPath, FieldValues } from "react-hook-form";
+import {
+  Controller,
+  Control,
+  FieldError,
+  FieldPath,
+  FieldValues,
+} from "react-hook-form";
 import {
   InputOTP,
   InputOTPGroup,
@@ -10,7 +16,7 @@ import { cn } from "@/lib/utils";
 
 interface FormFieldOTPProps<TFieldValues extends FieldValues> {
   id: string;
-  label: string;
+  label?: string;
   name: FieldPath<TFieldValues>;
   control: Control<TFieldValues>;
   error?: FieldError;
@@ -49,11 +55,11 @@ export function FormFieldOTP<TFieldValues extends FieldValues>({
             onChange={field.onChange}
             aria-invalid={error ? "true" : "false"}
           >
-            <InputOTPGroup>
-              {Array.from({ length: maxLength }).map((_, index) => (
+            {Array.from({ length: maxLength }).map((_, index) => (
+              <InputOTPGroup key={index}>
                 <InputOTPSlot key={index} index={index} />
-              ))}
-            </InputOTPGroup>
+              </InputOTPGroup>
+            ))}
           </InputOTP>
         )}
       />
@@ -61,4 +67,3 @@ export function FormFieldOTP<TFieldValues extends FieldValues>({
     </div>
   );
 }
-

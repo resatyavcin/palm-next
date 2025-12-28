@@ -2,6 +2,7 @@ export const AUTH_ROUTES = {
   signin: "/auth/signin",
   signup: "/auth/signup",
   forgotPassword: "/auth/forgot-password",
+  resetPasswordSent: "/auth/reset-password-sent",
   twoFactorSetup: "/auth/2fa/setup",
   twoFactorVerify: "/auth/2fa/verify",
 } as const;

@@ -13,12 +13,5 @@ export function useTwoFactorVerifyForm() {
     },
   });
 
-  const onSubmit = (data: TwoFactorVerifyFormData) => {
-    console.log("Two Factor Verify Form Data:", data);
-  };
-
-  return {
-    ...form,
-    onSubmit: form.handleSubmit(onSubmit),
-  };
+  return form;
 }
