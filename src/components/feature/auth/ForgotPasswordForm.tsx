@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { useForgotPasswordForm } from "./hooks/useForgotPasswordForm";
 import { FormField } from "./FormField";
+import { AUTH_MESSAGES } from "./constants/messages";
 
 export default function ForgotPasswordForm() {
   const {
@@ -18,9 +19,9 @@ export default function ForgotPasswordForm() {
         <div className="flex flex-col gap-6">
           <FormField
             id="email"
-            label="Email"
+            label={AUTH_MESSAGES.fields.email.label}
             type="email"
-            placeholder="someone@example.com"
+            placeholder={AUTH_MESSAGES.fields.email.placeholder}
             register={register("email")}
             error={errors.email}
           />
@@ -28,7 +29,9 @@ export default function ForgotPasswordForm() {
       </CardContent>
       <CardFooter className="flex flex-col gap-2 pt-6">
         <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? "Sending..." : "Send Reset Link"}
+          {isSubmitting
+            ? AUTH_MESSAGES.buttons.forgotPassword.submitting
+            : AUTH_MESSAGES.buttons.forgotPassword.default}
         </Button>
       </CardFooter>
     </form>

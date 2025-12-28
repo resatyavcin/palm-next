@@ -3,15 +3,18 @@ import { Button } from "@/components/ui/button";
 import FormCardComponent from "@/components/feature/auth/FormCard";
 import ForgotPasswordForm from "@/components/feature/auth/ForgotPasswordForm";
 import { AUTH_ROUTES } from "@/components/feature/auth/constants/routes";
+import { AUTH_MESSAGES } from "@/components/feature/auth/constants/messages";
 
 export default function ForgotPasswordPage() {
   return (
     <FormCardComponent
-      title="Forgot your password?"
-      description="Enter your email address and we'll send you a link to reset your password"
+      title={AUTH_MESSAGES.pages.forgotPassword.title}
+      description={AUTH_MESSAGES.pages.forgotPassword.description}
       action={
         <Button variant="link" asChild>
-          <Link href={AUTH_ROUTES.signin}>Back to Sign In</Link>
+          <Link href={AUTH_ROUTES.signin}>
+            {AUTH_MESSAGES.links.backToSignIn}
+          </Link>
         </Button>
       }
       form={<ForgotPasswordForm />}
@@ -20,4 +23,3 @@ export default function ForgotPasswordPage() {
     />
   );
 }
-

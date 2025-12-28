@@ -6,6 +6,7 @@ import { CardContent, CardFooter } from "@/components/ui/card";
 import { useSigninForm } from "./hooks/useSigninForm";
 import { FormField } from "./FormField";
 import { AUTH_ROUTES } from "./constants/routes";
+import { AUTH_MESSAGES } from "./constants/messages";
 
 export default function SigninForm() {
   const {
@@ -20,17 +21,17 @@ export default function SigninForm() {
         <div className="flex flex-col gap-6">
           <FormField
             id="email"
-            label="Email"
+            label={AUTH_MESSAGES.fields.email.label}
             type="email"
-            placeholder="someone@example.com"
+            placeholder={AUTH_MESSAGES.fields.email.placeholder}
             register={register("email")}
             error={errors.email}
           />
           <FormField
             id="password"
-            label="Password"
+            label={AUTH_MESSAGES.fields.password.label}
             type="password"
-            placeholder="********"
+            placeholder={AUTH_MESSAGES.fields.password.placeholder}
             register={register("password")}
             error={errors.password}
             labelHeader={
@@ -38,7 +39,7 @@ export default function SigninForm() {
                 href={AUTH_ROUTES.forgotPassword}
                 className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
               >
-                Forgot your password?
+                {AUTH_MESSAGES.links.forgotPassword}
               </Link>
             }
           />
@@ -46,7 +47,9 @@ export default function SigninForm() {
       </CardContent>
       <CardFooter className="flex flex-col gap-2 pt-6">
         <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? "Logging in..." : "Login"}
+          {isSubmitting
+            ? AUTH_MESSAGES.buttons.signin.submitting
+            : AUTH_MESSAGES.buttons.signin.default}
         </Button>
       </CardFooter>
     </form>

@@ -13,6 +13,7 @@ interface FormFieldProps {
   error?: FieldError;
   labelHeader?: React.ReactNode;
   className?: string;
+  maxLength?: number;
 }
 
 export function FormField({
@@ -24,6 +25,7 @@ export function FormField({
   error,
   labelHeader,
   className,
+  maxLength,
 }: FormFieldProps) {
   return (
     <div className={cn("grid gap-2", className)}>
@@ -39,6 +41,7 @@ export function FormField({
         id={id}
         type={type}
         placeholder={placeholder}
+        maxLength={maxLength}
         {...register}
         aria-invalid={error ? "true" : "false"}
       />

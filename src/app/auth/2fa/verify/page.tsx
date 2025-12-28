@@ -1,21 +1,23 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import FormCardComponent from "@/components/feature/auth/FormCard";
-import SigninForm from "@/components/feature/auth/SigninForm";
+import TwoFactorVerifyForm from "@/components/feature/auth/TwoFactorVerifyForm";
 import { AUTH_ROUTES } from "@/components/feature/auth/constants/routes";
 import { AUTH_MESSAGES } from "@/components/feature/auth/constants/messages";
 
-export default function SigninPage() {
+export default function TwoFactorVerifyPage() {
   return (
     <FormCardComponent
-      title={AUTH_MESSAGES.pages.signin.title}
-      description={AUTH_MESSAGES.pages.signin.description}
+      title={AUTH_MESSAGES.pages.twoFactorVerify.title}
+      description={AUTH_MESSAGES.pages.twoFactorVerify.description}
       action={
         <Button variant="link" asChild>
-          <Link href={AUTH_ROUTES.signup}>{AUTH_MESSAGES.links.signUp}</Link>
+          <Link href={AUTH_ROUTES.twoFactorSetup}>
+            {AUTH_MESSAGES.links.backToSetup}
+          </Link>
         </Button>
       }
-      form={<SigninForm />}
+      form={<TwoFactorVerifyForm />}
       footer={null}
       logo={"/logo.svg"}
     />

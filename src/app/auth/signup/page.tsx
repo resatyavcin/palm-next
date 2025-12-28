@@ -3,15 +3,16 @@ import { Button } from "@/components/ui/button";
 import FormCardComponent from "@/components/feature/auth/FormCard";
 import SignupForm from "@/components/feature/auth/SignupForm";
 import { AUTH_ROUTES } from "@/components/feature/auth/constants/routes";
+import { AUTH_MESSAGES } from "@/components/feature/auth/constants/messages";
 
 export default function SignupPage() {
   return (
     <FormCardComponent
-      title="Create an account"
-      description="Enter your information to create your account"
+      title={AUTH_MESSAGES.pages.signup.title}
+      description={AUTH_MESSAGES.pages.signup.description}
       action={
         <Button variant="link" asChild>
-          <Link href={AUTH_ROUTES.signin}>Sign In</Link>
+          <Link href={AUTH_ROUTES.signin}>{AUTH_MESSAGES.links.signIn}</Link>
         </Button>
       }
       form={<SignupForm />}
