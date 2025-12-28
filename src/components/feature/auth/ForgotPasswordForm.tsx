@@ -1,18 +1,16 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
-import { useSigninForm } from "./hooks/useSigninForm";
+import { useForgotPasswordForm } from "./hooks/useForgotPasswordForm";
 import { FormField } from "./FormField";
-import { AUTH_ROUTES } from "./constants/routes";
 
-export default function SigninForm() {
+export default function ForgotPasswordForm() {
   const {
     register,
     onSubmit,
     formState: { errors, isSubmitting },
-  } = useSigninForm();
+  } = useForgotPasswordForm();
 
   return (
     <form onSubmit={onSubmit}>
@@ -26,29 +24,14 @@ export default function SigninForm() {
             register={register("email")}
             error={errors.email}
           />
-          <FormField
-            id="password"
-            label="Password"
-            type="password"
-            placeholder="********"
-            register={register("password")}
-            error={errors.password}
-            labelHeader={
-              <Link
-                href={AUTH_ROUTES.forgotPassword}
-                className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-              >
-                Forgot your password?
-              </Link>
-            }
-          />
         </div>
       </CardContent>
       <CardFooter className="flex flex-col gap-2 pt-6">
         <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? "Logging in..." : "Login"}
+          {isSubmitting ? "Sending..." : "Send Reset Link"}
         </Button>
       </CardFooter>
     </form>
   );
 }
+

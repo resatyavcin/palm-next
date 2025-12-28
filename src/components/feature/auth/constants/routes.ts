@@ -1,6 +1,7 @@
 export const AUTH_ROUTES = {
   signin: "/auth/signin",
   signup: "/auth/signup",
+  forgotPassword: "/auth/forgot-password",
 } as const;
 
 export type AuthRoute = (typeof AUTH_ROUTES)[keyof typeof AUTH_ROUTES];
