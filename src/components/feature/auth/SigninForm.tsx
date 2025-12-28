@@ -20,7 +20,7 @@ export default function SigninForm() {
             id="email"
             label="Email"
             type="email"
-            placeholder="m@example.com"
+            placeholder="someone@example.com"
             register={register("email")}
             error={errors.email}
           />
@@ -28,6 +28,7 @@ export default function SigninForm() {
             id="password"
             label="Password"
             type="password"
+            placeholder="********"
             register={register("password")}
             error={errors.password}
             labelHeader={
