@@ -23,7 +23,7 @@ const FormCardComponent = ({
   description: string;
   action: React.ReactNode;
   form: React.ReactNode;
-  footer: React.ReactNode;
+  footer?: React.ReactNode | null;
   logo?: React.ReactNode | string;
 }) => {
   return (
@@ -34,8 +34,7 @@ const FormCardComponent = ({
         <CardDescription>{description}</CardDescription>
         <CardAction>{action}</CardAction>
       </CardHeader>
-      <CardContent>{form}</CardContent>
-      <CardFooter className="flex-col gap-2">{footer}</CardFooter>
+      {form}
     </Card>
   );
 };
