@@ -16,8 +16,6 @@ const FormCardComponent = ({
   description,
   action,
   form,
-  footer,
-  logo,
 }: {
   title: string;
   description: string;
@@ -30,7 +28,7 @@ const FormCardComponent = ({
     <Card className="w-full max-w-sm">
       <CardHeader>
         <div className="flex items-start justify-between gap-4 mb-3">
-          {logo && <Palmtree className="text-green-600" />}
+          <Palmtree className="text-green-600" />
           {action && <div className="shrink-0">{action}</div>}
         </div>
         <CardTitle className="col-span-full">{title}</CardTitle>

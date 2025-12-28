@@ -18,8 +18,6 @@ export default function TwoFactorVerifyPage() {
         </Button>
       }
       form={<TwoFactorVerifyForm />}
-      footer={null}
-      logo={"/logo.svg"}
     />
   );
 }

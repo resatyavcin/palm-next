@@ -1,11 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
-import { Spinner } from "@/components/ui/spinner";
 import { useTwoFactorVerifyForm } from "./hooks/useTwoFactorVerifyForm";
 import { FormFieldOTP } from "./FormFieldOTP";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
+import { SubmitButton } from "./SubmitButton";
 
 export default function TwoFactorVerifyForm() {
   const {
@@ -34,16 +33,13 @@ export default function TwoFactorVerifyForm() {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col gap-2 pt-6">
-        <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? (
-            <>
-              <Spinner />
-              {AUTH_MESSAGES.buttons.verify.submitting}
-            </>
-          ) : (
-            AUTH_MESSAGES.buttons.verify.default
-          )}
-        </Button>
+        <SubmitButton
+          className="w-full"
+          isLoading={isSubmitting}
+          loadingText={AUTH_MESSAGES.buttons.verify.submitting}
+        >
+          {AUTH_MESSAGES.buttons.verify.default}
+        </SubmitButton>
       </CardFooter>
     </form>
   );

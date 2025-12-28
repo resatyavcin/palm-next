@@ -24,8 +24,6 @@ export default function TwoFactorSetupPage() {
       form={
         <TwoFactorSetup qrCodeValue={SAMPLE_QR_VALUE} secret={SAMPLE_SECRET} />
       }
-      footer={null}
-      logo={"/logo.svg"}
     />
   );
 }

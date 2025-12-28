@@ -18,8 +18,6 @@ export default function ForgotPasswordPage() {
         </Button>
       }
       form={<ForgotPasswordForm />}
-      footer={null}
-      logo={"/logo.svg"}
     />
   );
 }

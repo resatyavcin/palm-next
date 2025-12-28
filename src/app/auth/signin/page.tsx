@@ -16,8 +16,6 @@ export default function SigninPage() {
         </Button>
       }
       form={<SigninForm />}
-      footer={null}
-      logo={"/logo.svg"}
     />
   );
 }

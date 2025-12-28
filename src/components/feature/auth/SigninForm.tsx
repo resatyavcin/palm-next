@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
-import { Spinner } from "@/components/ui/spinner";
 import { useSigninForm } from "./hooks/useSigninForm";
 import { FormField } from "./FormField";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
+import { SubmitButton } from "./SubmitButton";
 
 export default function SigninForm() {
   const {
@@ -52,16 +51,13 @@ export default function SigninForm() {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col gap-2 pt-6">
-        <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? (
-            <>
-              <Spinner />
-              {AUTH_MESSAGES.buttons.signin.submitting}
-            </>
-          ) : (
-            AUTH_MESSAGES.buttons.signin.default
-          )}
-        </Button>
+        <SubmitButton
+          className="w-full"
+          isLoading={isSubmitting}
+          loadingText={AUTH_MESSAGES.buttons.signin.submitting}
+        >
+          {AUTH_MESSAGES.buttons.signin.default}
+        </SubmitButton>
       </CardFooter>
     </form>
   );
