@@ -1,0 +1,22 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Palm Trunk -->
+  <rect x="30" y="42" width="4" height="18" rx="2" fill="#8B4513"/>
+  
+  <!-- Palm Leaves (top to bottom, alternating) -->
+  <!-- Top center leaf -->
+  <path d="M32 8C32 8 28 14 30 22L32 26L34 22C36 14 32 8 32 8Z" fill="#228B22"/>
+  
+  <!-- Left leaves -->
+  <path d="M32 12C32 12 18 18 22 28L28 32L32 26V12Z" fill="#32CD32"/>
+  <path d="M32 16C32 16 14 24 20 36L26 38L32 30V16Z" fill="#228B22"/>
+  <path d="M32 20C32 20 10 28 16 40L24 42L32 34V20Z" fill="#32CD32"/>
+  
+  <!-- Right leaves -->
+  <path d="M32 12C32 12 46 18 42 28L36 32L32 26V12Z" fill="#228B22"/>
+  <path d="M32 16C32 16 50 24 44 36L38 38L32 30V16Z" fill="#32CD32"/>
+  <path d="M32 20C32 20 54 28 48 40L40 42L32 34V20Z" fill="#228B22"/>
+  
+  <!-- Trunk texture lines -->
+  <line x1="31" y1="46" x2="31" y2="58" stroke="#654321" stroke-width="0.5"/>
+  <line x1="33" y1="46" x2="33" y2="58" stroke="#654321" stroke-width="0.5"/>
+</svg>
