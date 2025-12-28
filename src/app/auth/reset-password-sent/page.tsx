@@ -1,8 +1,7 @@
 import SuccessCardComponent from "@/components/feature/auth/SuccessCard";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
 import { AUTH_ROUTES } from "@/app/constants/routes";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { LinkButton } from "@/components/feature/auth/LinkButton";
 
 export default function ResetPasswordSentPage() {
   return (
@@ -12,16 +11,16 @@ export default function ResetPasswordSentPage() {
       extraInfo={AUTH_MESSAGES.helpers.resetPasswordSent.noEmailReceived}
       actions={
         <>
-          <Button asChild className="w-full">
-            <Link href={AUTH_ROUTES.signin}>
-              {AUTH_MESSAGES.links.backToLogin}
-            </Link>
-          </Button>
-          <Button variant="outline" asChild className="w-full">
-            <Link href={AUTH_ROUTES.forgotPassword}>
-              {AUTH_MESSAGES.links.resendLink}
-            </Link>
-          </Button>
+          <LinkButton href={AUTH_ROUTES.signin} className="w-full">
+            {AUTH_MESSAGES.links.backToLogin}
+          </LinkButton>
+          <LinkButton
+            variant="outline"
+            href={AUTH_ROUTES.forgotPassword}
+            className="w-full"
+          >
+            {AUTH_MESSAGES.links.resendLink}
+          </LinkButton>
         </>
       }
     />

@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import FormCardComponent from "@/components/feature/auth/FormCard";
-import SigninForm from "@/components/feature/auth/SigninForm";
+import SigninForm from "@/components/feature/auth/form/SigninForm";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
+import { LinkButton } from "@/components/feature/auth/LinkButton";
 
 export default function SigninPage() {
   return (
@@ -11,9 +10,9 @@ export default function SigninPage() {
       title={AUTH_MESSAGES.pages.signin.title}
       description={AUTH_MESSAGES.pages.signin.description}
       action={
-        <Button variant="link" asChild>
-          <Link href={AUTH_ROUTES.signup}>{AUTH_MESSAGES.links.signUp}</Link>
-        </Button>
+        <LinkButton href={AUTH_ROUTES.signup}>
+          {AUTH_MESSAGES.links.signUp}
+        </LinkButton>
       }
       form={<SigninForm />}
     />

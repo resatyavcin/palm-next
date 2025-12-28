@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import FormCardComponent from "@/components/feature/auth/FormCard";
-import ForgotPasswordForm from "@/components/feature/auth/ForgotPasswordForm";
+import ForgotPasswordForm from "@/components/feature/auth/form/ForgotPasswordForm";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
+import { LinkButton } from "@/components/feature/auth/LinkButton";
 
 export default function ForgotPasswordPage() {
   return (
@@ -11,11 +10,9 @@ export default function ForgotPasswordPage() {
       title={AUTH_MESSAGES.pages.forgotPassword.title}
       description={AUTH_MESSAGES.pages.forgotPassword.description}
       action={
-        <Button variant="link" asChild>
-          <Link href={AUTH_ROUTES.signin}>
-            {AUTH_MESSAGES.links.backToSignIn}
-          </Link>
-        </Button>
+        <LinkButton href={AUTH_ROUTES.signin}>
+          {AUTH_MESSAGES.links.backToSignIn}
+        </LinkButton>
       }
       form={<ForgotPasswordForm />}
     />

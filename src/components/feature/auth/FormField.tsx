@@ -3,7 +3,6 @@ import { UseFormRegisterReturn, FieldError } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { FieldError as FieldErrorMessage } from "@/components/ui/field";
 
 interface FormFieldProps {
   id: string;
@@ -47,7 +46,6 @@ export function FormField({
         aria-invalid={error ? "true" : "false"}
       />
       {error && <p className="text-sm text-destructive">{error.message}</p>}
-      {error && <FieldErrorMessage>{error.message}</FieldErrorMessage>}
     </div>
   );
 }

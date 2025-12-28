@@ -1,21 +1,23 @@
 "use client";
 
+import Link from "next/link";
 import { CardContent, CardFooter } from "@/components/ui/card";
-import { useSignupForm } from "./hooks/useSignupForm";
-import { FormField } from "./FormField";
+import { useSigninForm } from "./hooks/useSigninForm";
+import { FormField } from "../FormField";
+import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
-import { SubmitButton } from "./SubmitButton";
+import { SubmitButton } from "../SubmitButton";
 
-export default function SignupForm() {
+export default function SigninForm() {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useSignupForm();
+  } = useSigninForm();
 
   const onSubmit = handleSubmit(async (data) => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("Signup Form Data:", data);
+    console.log("Signin Form Data:", data);
   });
 
   return (
@@ -37,14 +39,14 @@ export default function SignupForm() {
             placeholder={AUTH_MESSAGES.fields.password.placeholder}
             register={register("password")}
             error={errors.password}
-          />
-          <FormField
-            id="confirmPassword"
-            label={AUTH_MESSAGES.fields.confirmPassword.label}
-            type="password"
-            placeholder={AUTH_MESSAGES.fields.confirmPassword.placeholder}
-            register={register("confirmPassword")}
-            error={errors.confirmPassword}
+            labelHeader={
+              <Link
+                href={AUTH_ROUTES.forgotPassword}
+                className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+              >
+                {AUTH_MESSAGES.links.forgotPassword}
+              </Link>
+            }
           />
         </div>
       </CardContent>
@@ -52,9 +54,9 @@ export default function SignupForm() {
         <SubmitButton
           className="w-full"
           isLoading={isSubmitting}
-          loadingText={AUTH_MESSAGES.buttons.signup.submitting}
+          loadingText={AUTH_MESSAGES.buttons.signin.submitting}
         >
-          {AUTH_MESSAGES.buttons.signup.default}
+          {AUTH_MESSAGES.buttons.signin.default}
         </SubmitButton>
       </CardFooter>
     </form>

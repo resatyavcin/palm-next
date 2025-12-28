@@ -1,11 +1,10 @@
 "use client";
 
 import QRCodeSVG from "react-qr-code";
-import { Button } from "@/components/ui/button";
 import { CardContent, CardFooter } from "@/components/ui/card";
-import Link from "next/link";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
+import { LinkButton } from "./LinkButton";
 
 interface TwoFactorSetupProps {
   qrCodeValue: string;
@@ -39,11 +38,9 @@ export default function TwoFactorSetup({
         </div>
       </CardContent>
       <CardFooter className="flex flex-col gap-2 pt-6">
-        <Button asChild className="w-full">
-          <Link href={AUTH_ROUTES.twoFactorVerify}>
-            {AUTH_MESSAGES.buttons.twoFactorSetup.continue}
-          </Link>
-        </Button>
+        <LinkButton href={AUTH_ROUTES.twoFactorVerify} className="w-full">
+          {AUTH_MESSAGES.buttons.twoFactorSetup.continue}
+        </LinkButton>
       </CardFooter>
     </div>
   );

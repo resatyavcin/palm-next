@@ -2,9 +2,9 @@
 
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { useForgotPasswordForm } from "./hooks/useForgotPasswordForm";
-import { FormField } from "./FormField";
+import { FormField } from "../FormField";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
-import { SubmitButton } from "./SubmitButton";
+import { SubmitButton } from "../SubmitButton";
 
 export default function ForgotPasswordForm() {
   const {

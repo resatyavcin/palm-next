@@ -2,9 +2,9 @@
 
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { useTwoFactorVerifyForm } from "./hooks/useTwoFactorVerifyForm";
-import { FormFieldOTP } from "./FormFieldOTP";
+import { FormFieldOTP } from "../FormFieldOTP";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
-import { SubmitButton } from "./SubmitButton";
+import { SubmitButton } from "../SubmitButton";
 
 export default function TwoFactorVerifyForm() {
   const {

@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import FormCardComponent from "@/components/feature/auth/FormCard";
 import TwoFactorSetup from "@/components/feature/auth/TwoFactorSetup";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
+import { LinkButton } from "@/components/feature/auth/LinkButton";
 
 // This would normally come from your backend/API
 // For demo purposes, we're using a sample QR code value
@@ -17,9 +16,9 @@ export default function TwoFactorSetupPage() {
       title={AUTH_MESSAGES.pages.twoFactorSetup.title}
       description={AUTH_MESSAGES.pages.twoFactorSetup.description}
       action={
-        <Button variant="link" asChild>
-          <Link href={AUTH_ROUTES.signin}>{AUTH_MESSAGES.links.cancel}</Link>
-        </Button>
+        <LinkButton href={AUTH_ROUTES.signin}>
+          {AUTH_MESSAGES.links.cancel}
+        </LinkButton>
       }
       form={
         <TwoFactorSetup qrCodeValue={SAMPLE_QR_VALUE} secret={SAMPLE_SECRET} />
