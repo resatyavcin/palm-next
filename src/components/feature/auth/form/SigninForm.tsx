@@ -7,17 +7,27 @@ import { FormField } from "../FormField";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
 import { SubmitButton } from "../SubmitButton";
+import { useLogin } from "@/lib/hooks/useAuth";
 
 export default function SigninForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useSigninForm();
 
+  const loginMutation = useLogin();
+
   const onSubmit = handleSubmit(async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("Signin Form Data:", data);
+    try {
+      const response = await loginMutation.mutateAsync({
+        email: data.email,
+        password: data.password,
+      });
+      console.log("Login successful", response);
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   });
 
   return (
@@ -53,7 +63,7 @@ export default function SigninForm() {
       <CardFooter className="flex flex-col gap-2 pt-6">
         <SubmitButton
           className="w-full"
-          isLoading={isSubmitting}
+          isLoading={loginMutation.isPending}
           loadingText={AUTH_MESSAGES.buttons.signin.submitting}
         >
           {AUTH_MESSAGES.buttons.signin.default}

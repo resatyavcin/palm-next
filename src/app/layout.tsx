@@ -1,5 +1,7 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
+import { QueryProvider } from "@/lib/providers/QueryProvider";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Palm Next Auth",
@@ -16,7 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <QueryProvider>{children}</QueryProvider>
+        <Toaster />
+      </body>
     </html>
   );
 }

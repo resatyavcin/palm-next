@@ -11,7 +11,11 @@ export default function ResetPasswordSentPage() {
       extraInfo={AUTH_MESSAGES.helpers.resetPasswordSent.noEmailReceived}
       actions={
         <>
-          <LinkButton href={AUTH_ROUTES.signin} className="w-full">
+          <LinkButton
+            href={AUTH_ROUTES.signin}
+            variant="default"
+            className="w-full"
+          >
             {AUTH_MESSAGES.links.backToLogin}
           </LinkButton>
           <LinkButton

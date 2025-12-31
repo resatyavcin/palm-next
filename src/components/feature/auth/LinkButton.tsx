@@ -15,13 +15,14 @@ interface LinkButtonProps
 
 export function LinkButton({
   href,
+  variant = "link",
   size = "default",
   className,
   children,
   ...props
 }: LinkButtonProps) {
   return (
-    <Button asChild variant={"link"} size={size} className={className}>
+    <Button asChild variant={variant} size={size} className={className}>
       <Link href={href} {...props}>
         {children}
       </Link>

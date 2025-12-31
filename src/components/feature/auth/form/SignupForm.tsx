@@ -5,17 +5,27 @@ import { useSignupForm } from "./hooks/useSignupForm";
 import { FormField } from "../FormField";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
 import { SubmitButton } from "../SubmitButton";
+import { useRegister } from "@/lib/hooks/useAuth";
 
 export default function SignupForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useSignupForm();
 
+  const registerMutation = useRegister();
+
   const onSubmit = handleSubmit(async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("Signup Form Data:", data);
+    try {
+      await registerMutation.mutateAsync({
+        email: data.email,
+        password: data.password,
+        confirmPassword: data.confirmPassword,
+      });
+    } catch (error) {
+      console.error("Registration failed:", error);
+    }
   });
 
   return (
@@ -51,7 +61,7 @@ export default function SignupForm() {
       <CardFooter className="flex flex-col gap-2 pt-6">
         <SubmitButton
           className="w-full"
-          isLoading={isSubmitting}
+          isLoading={registerMutation.isPending}
           loadingText={AUTH_MESSAGES.buttons.signup.submitting}
         >
           {AUTH_MESSAGES.buttons.signup.default}
