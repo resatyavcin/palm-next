@@ -2,7 +2,7 @@
 
 import QRCodeSVG from "react-qr-code";
 import { CardContent, CardFooter } from "@/components/ui/card";
-import { AUTH_ROUTES } from "@/app/constants/routes";
+import { ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
 import { LinkButton } from "../../../LinkButton";
 
@@ -39,7 +39,7 @@ export default function TwoFactorSetupForm({
       </CardContent>
       <CardFooter className="flex flex-col gap-2">
         <LinkButton
-          href={AUTH_ROUTES.twoFactorVerify}
+          href={ROUTES.AUTH_TWO_FACTOR_VERIFY}
           variant="default"
           className="w-full"
         >

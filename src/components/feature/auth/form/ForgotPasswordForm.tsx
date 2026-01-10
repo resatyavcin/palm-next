@@ -6,7 +6,7 @@ import { FormField } from "../FormField";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
 import { SubmitButton } from "../../../SubmitButton";
 import { useRouter } from "next/navigation";
-import { AUTH_ROUTES } from "@/app/constants/routes";
+import { ROUTES } from "@/app/constants/routes";
 
 export default function ForgotPasswordForm() {
   const {
@@ -19,7 +19,7 @@ export default function ForgotPasswordForm() {
 
   const onSubmit = handleSubmit(async (data) => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    router.push(AUTH_ROUTES.resetPasswordSent);
+    router.push(ROUTES.AUTH_RESET_PASSWORD_SENT);
     console.log("Forgot Password Form Data:", data);
   });
 

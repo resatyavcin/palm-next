@@ -1,6 +1,6 @@
 import SuccessCardComponent from "@/components/SuccessCard";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
-import { AUTH_ROUTES } from "@/app/constants/routes";
+import { ROUTES } from "@/app/constants/routes";
 import { LinkButton } from "@/components/LinkButton";
 
 export default function ResetPasswordSentPage() {
@@ -12,7 +12,7 @@ export default function ResetPasswordSentPage() {
       actions={
         <>
           <LinkButton
-            href={AUTH_ROUTES.signin}
+            href={ROUTES.AUTH_SIGNIN}
             variant="default"
             className="w-full"
           >
@@ -20,7 +20,7 @@ export default function ResetPasswordSentPage() {
           </LinkButton>
           <LinkButton
             variant="outline"
-            href={AUTH_ROUTES.forgotPassword}
+            href={ROUTES.AUTH_FORGOT_PASSWORD}
             className="w-full"
           >
             {AUTH_MESSAGES.links.resendLink}

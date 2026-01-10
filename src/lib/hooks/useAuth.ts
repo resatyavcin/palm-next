@@ -7,7 +7,7 @@ import type {
   LoginResponse,
   RegisterResponse,
 } from "../types/auth";
-import { AUTH_ROUTES } from "@/app/constants/routes";
+import { ROUTES } from "@/app/constants/routes";
 import { useApiMutation } from "./useApiMutation";
 
 export function useLogin() {
@@ -19,7 +19,7 @@ export function useLogin() {
       }
       return data.token;
     },
-    redirectOnSuccess: "/",
+    redirectOnSuccess: ROUTES.HOME,
   });
 }
 
@@ -32,6 +32,6 @@ export function useRegister() {
       }
       return data.token;
     },
-    redirectOnSuccess: AUTH_ROUTES.twoFactorSetup,
+    redirectOnSuccess: ROUTES.AUTH_TWO_FACTOR_SETUP,
   });
 }

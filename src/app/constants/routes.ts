@@ -1,18 +1,20 @@
-export const AUTH_ROUTES = {
-  signin: "/auth/signin",
-  signup: "/auth/signup",
-  forgotPassword: "/auth/forgot-password",
-  resetPasswordSent: "/auth/reset-password-sent",
-  twoFactorSetup: "/auth/2fa/setup",
-  twoFactorVerify: "/auth/2fa/verify",
+/**
+ * Centralized routes for the entire application
+ * All routes should be accessed from this single source
+ */
+export const ROUTES = {
+  // Auth routes
+  AUTH_SIGNIN: "/auth/signin",
+  AUTH_SIGNUP: "/auth/signup",
+  AUTH_FORGOT_PASSWORD: "/auth/forgot-password",
+  AUTH_RESET_PASSWORD_SENT: "/auth/reset-password-sent",
+  AUTH_TWO_FACTOR_SETUP: "/auth/2fa/setup",
+  AUTH_TWO_FACTOR_VERIFY: "/auth/2fa/verify",
+
+  // App routes
+  HOME: "/",
+  ACCOUNT: "/account",
+  LOGOUT: "/auth/signin",
 } as const;
 
-export type AuthRoute = (typeof AUTH_ROUTES)[keyof typeof AUTH_ROUTES];
-
-export const APP_ROUTES = {
-  account: "/account",
-  home: "/",
-  logout: "/auth/signin",
-} as const;
-
-export type AppRoute = (typeof APP_ROUTES)[keyof typeof APP_ROUTES];
+export type Route = (typeof ROUTES)[keyof typeof ROUTES];

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { useSigninForm } from "./hooks/useSigninForm";
 import { FormField } from "../FormField";
-import { AUTH_ROUTES } from "@/app/constants/routes";
+import { ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
 import { SubmitButton } from "../../../SubmitButton";
 import { useLogin } from "@/lib/hooks/useAuth";
@@ -51,7 +51,7 @@ export default function SigninForm() {
             error={errors.password}
             labelHeader={
               <Link
-                href={AUTH_ROUTES.forgotPassword}
+                href={ROUTES.AUTH_FORGOT_PASSWORD}
                 className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
               >
                 {AUTH_MESSAGES.links.forgotPassword}

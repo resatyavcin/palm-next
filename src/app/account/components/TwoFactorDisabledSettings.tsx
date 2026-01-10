@@ -76,7 +76,9 @@ export default function TwoFactorDisabledSettings({
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between">
               <div className="text-left space-y-1">
-                <CardTitle>{ACCOUNT_MESSAGES.twoFactor.disabled.title}</CardTitle>
+                <CardTitle>
+                  {ACCOUNT_MESSAGES.twoFactor.disabled.title}
+                </CardTitle>
                 <CardDescription>{description}</CardDescription>
               </div>
               {isOpen ? (
