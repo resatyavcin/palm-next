@@ -16,11 +16,14 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import ChangePasswordForm from "./forms/ChangePasswordForm";
-import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function ChangePasswordSettings() {
+  const { t, language } = useLanguage();
   const [isChanging, setIsChanging] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const accountTranslations = translations[language].account;
 
   const handleChangePassword = async (data: {
     currentPassword: string;
@@ -32,10 +35,10 @@ export default function ChangePasswordSettings() {
       // This would normally call your API to change password
       await new Promise((resolve) => setTimeout(resolve, 1000));
       console.log("Change Password Form Data:", data);
-      toast.success(ACCOUNT_MESSAGES.passwordChange.success);
+      toast.success(t(accountTranslations, "passwordChange.success"));
     } catch (error) {
       console.error("Failed to change password:", error);
-      toast.error(ACCOUNT_MESSAGES.passwordChange.error);
+      toast.error(t(accountTranslations, "passwordChange.error"));
       throw error;
     } finally {
       setIsChanging(false);
@@ -49,9 +52,11 @@ export default function ChangePasswordSettings() {
           <CollapsibleTrigger className="w-full">
             <div className="flex items-center justify-between">
               <div className="text-left space-y-1">
-                <CardTitle>{ACCOUNT_MESSAGES.passwordChange.title}</CardTitle>
+                <CardTitle>
+                  {t(accountTranslations, "passwordChange.title")}
+                </CardTitle>
                 <CardDescription>
-                  {ACCOUNT_MESSAGES.passwordChange.description}
+                  {t(accountTranslations, "passwordChange.description")}
                 </CardDescription>
               </div>
               {isOpen ? (

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
 
 interface UseCopyToClipboardOptions {
   text: string;
@@ -11,8 +10,8 @@ interface UseCopyToClipboardOptions {
 
 export function useCopyToClipboard({
   text,
-  successMessage = ACCOUNT_MESSAGES.twoFactor.secretKeyModal.copySuccess,
-  errorMessage = ACCOUNT_MESSAGES.twoFactor.secretKeyModal.copyError,
+  successMessage = "Copied to clipboard",
+  errorMessage = "Failed to copy",
   resetDelay = 2000,
 }: UseCopyToClipboardOptions) {
   const [isCopied, setIsCopied] = useState(false);

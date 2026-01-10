@@ -17,7 +17,8 @@ import {
 } from "@/components/ui/card";
 import Enable2FAForm from "./forms/Enable2FAForm";
 import SecretKeyModal from "./SecretKeyModal";
-import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface TwoFactorDisabledSettingsProps {
   qrCodeValue?: string;
@@ -30,8 +31,11 @@ export default function TwoFactorDisabledSettings({
   qrCodeValue = "otpauth://totp/Example:user@example.com?secret=JBSWY3DPEHPK3PXP&issuer=Example",
   secret = "JBSWY3DPEHPK3PXP",
   onEnable,
-  learnMoreUrl = ACCOUNT_MESSAGES.twoFactor.learnMoreUrl,
+  learnMoreUrl,
 }: TwoFactorDisabledSettingsProps) {
+  const { t, language } = useLanguage();
+  const accountTranslations = translations[language].account;
+  const defaultLearnMoreUrl = accountTranslations.twoFactor.learnMoreUrl;
   const [isEnabling, setIsEnabling] = useState(false);
   const [isSecretKeyModalOpen, setIsSecretKeyModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -56,12 +60,12 @@ export default function TwoFactorDisabledSettings({
     <>
       Two-factor authentication (2FA,{" "}
       <a
-        href={learnMoreUrl}
+        href={learnMoreUrl || defaultLearnMoreUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-1 text-primary hover:underline"
       >
-        {ACCOUNT_MESSAGES.twoFactor.disabled.learnMore}
+        {t(accountTranslations, "twoFactor.disabled.learnMore")}
         <Link2 className="h-3 w-3" />
       </a>
       ) adds an additional level of security to your account by requiring more
@@ -77,7 +81,7 @@ export default function TwoFactorDisabledSettings({
             <div className="flex items-center justify-between">
               <div className="text-left space-y-1">
                 <CardTitle>
-                  {ACCOUNT_MESSAGES.twoFactor.disabled.title}
+                  {t(accountTranslations, "twoFactor.disabled.title")}
                 </CardTitle>
                 <CardDescription>{description}</CardDescription>
               </div>
@@ -94,7 +98,10 @@ export default function TwoFactorDisabledSettings({
             <div className="space-y-6">
               <div>
                 <p className="text-sm text-muted-foreground">
-                  {ACCOUNT_MESSAGES.twoFactor.disabled.setupInstructions}
+                  {t(
+                    accountTranslations,
+                    "twoFactor.disabled.setupInstructions"
+                  )}
                 </p>
               </div>
 
@@ -109,7 +116,10 @@ export default function TwoFactorDisabledSettings({
                       onClick={() => setIsSecretKeyModalOpen(true)}
                       className="text-xs text-muted-foreground hover:text-primary transition-colors underline underline-offset-2"
                     >
-                      {ACCOUNT_MESSAGES.twoFactor.disabled.enterManually}
+                      {t(
+                        accountTranslations,
+                        "twoFactor.disabled.enterManually"
+                      )}
                     </button>
                   </div>
                 </div>
@@ -117,10 +127,13 @@ export default function TwoFactorDisabledSettings({
                 <div className="space-y-4">
                   <div>
                     <h4 className="text-sm font-semibold mb-2">
-                      {ACCOUNT_MESSAGES.twoFactor.disabled.verifyTitle}
+                      {t(accountTranslations, "twoFactor.disabled.verifyTitle")}
                     </h4>
                     <p className="text-sm text-muted-foreground mb-4">
-                      {ACCOUNT_MESSAGES.twoFactor.disabled.verifyDescription}
+                      {t(
+                        accountTranslations,
+                        "twoFactor.disabled.verifyDescription"
+                      )}
                     </p>
                   </div>
                   <Enable2FAForm

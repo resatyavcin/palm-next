@@ -5,7 +5,8 @@ import { FormFieldOTP } from "@/components/feature/auth/FormFieldOTP";
 import { useDisable2FAForm } from "../hooks/useDisable2FAForm";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface Disable2FAFormProps {
   onSubmit: (data: { password: string; code: string }) => Promise<void>;
@@ -16,6 +17,8 @@ export default function Disable2FAForm({
   onSubmit,
   isSubmitting = false,
 }: Disable2FAFormProps) {
+  const { t, language } = useLanguage();
+  const accountTranslations = translations[language].account;
   const disableForm = useDisable2FAForm();
 
   const handleSubmit = disableForm.handleSubmit(async (data) => {
@@ -29,15 +32,18 @@ export default function Disable2FAForm({
     <form onSubmit={handleSubmit} className="space-y-4">
       <FormField
         id="current-password"
-        label={ACCOUNT_MESSAGES.twoFactor.forms.currentPassword.label}
+        label={t(accountTranslations, "twoFactor.forms.currentPassword.label")}
         type="password"
-        placeholder={ACCOUNT_MESSAGES.twoFactor.forms.currentPassword.placeholder}
+        placeholder={t(
+          accountTranslations,
+          "twoFactor.forms.currentPassword.placeholder"
+        )}
         register={disableForm.register("password")}
         error={disableForm.formState.errors.password}
       />
       <FormFieldOTP
         id="two-factor-code"
-        label={ACCOUNT_MESSAGES.twoFactor.forms.twoFactorCode.label}
+        label={t(accountTranslations, "twoFactor.forms.twoFactorCode.label")}
         name="code"
         control={disableForm.control}
         error={disableForm.formState.errors.code}
@@ -55,8 +61,8 @@ export default function Disable2FAForm({
           )}
         >
           {isSubmitting
-            ? ACCOUNT_MESSAGES.twoFactor.forms.disable.submitting
-            : ACCOUNT_MESSAGES.twoFactor.forms.disable.button}
+            ? t(accountTranslations, "twoFactor.forms.disable.submitting")
+            : t(accountTranslations, "twoFactor.forms.disable.button")}
         </Button>
       </div>
     </form>

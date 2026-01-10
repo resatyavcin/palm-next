@@ -1,7 +1,9 @@
 import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { QueryProvider } from "@/lib/providers/QueryProvider";
+import { LanguageProvider } from "@/lib/contexts/LanguageContext";
 import { Toaster } from "sonner";
+import { LanguageSelector } from "@/components/LanguageSelector";
 
 export const metadata: Metadata = {
   title: "Palm Next Auth",
@@ -17,10 +19,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
-        <QueryProvider>{children}</QueryProvider>
-        <Toaster />
+        <LanguageProvider>
+          <QueryProvider>
+            <div className="relative min-h-screen">
+              <div className="fixed top-4 right-4 z-50">
+                <LanguageSelector />
+              </div>
+              {children}
+            </div>
+          </QueryProvider>
+          <Toaster />
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -16,7 +16,8 @@ import {
 } from "@/components/ui/card";
 import TwoFactorEnabledStatus from "./TwoFactorEnabledStatus";
 import Disable2FAForm from "./forms/Disable2FAForm";
-import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface TwoFactorEnabledSettingsProps {
   onDisable?: () => Promise<void>;
@@ -25,8 +26,11 @@ interface TwoFactorEnabledSettingsProps {
 
 export default function TwoFactorEnabledSettings({
   onDisable,
-  learnMoreUrl = ACCOUNT_MESSAGES.twoFactor.learnMoreUrl,
+  learnMoreUrl,
 }: TwoFactorEnabledSettingsProps) {
+  const { t, language } = useLanguage();
+  const accountTranslations = translations[language].account;
+  const defaultLearnMoreUrl = accountTranslations.twoFactor.learnMoreUrl;
   const [isDisabling, setIsDisabling] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -50,12 +54,12 @@ export default function TwoFactorEnabledSettings({
     <>
       Two-factor authentication (2FA,{" "}
       <a
-        href={learnMoreUrl}
+        href={learnMoreUrl || defaultLearnMoreUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-1 text-primary hover:underline"
       >
-        {ACCOUNT_MESSAGES.twoFactor.disabled.learnMore}
+        {t(accountTranslations, "twoFactor.disabled.learnMore")}
         <Link2 className="h-3 w-3" />
       </a>
       ) adds an additional level of security to your account by requiring more
@@ -71,7 +75,7 @@ export default function TwoFactorEnabledSettings({
             <div className="flex items-center justify-between">
               <div className="text-left space-y-1">
                 <CardTitle>
-                  {ACCOUNT_MESSAGES.twoFactor.enabled.disableTitle}
+                  {t(accountTranslations, "twoFactor.enabled.disableTitle")}
                 </CardTitle>
                 <CardDescription>{description}</CardDescription>
               </div>

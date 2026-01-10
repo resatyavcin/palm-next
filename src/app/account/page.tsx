@@ -3,9 +3,11 @@
 import { useState } from "react";
 import TwoFactorSettings from "@/app/account/components/TwoFactorSettings";
 import ChangePasswordSettings from "@/app/account/components/ChangePasswordSettings";
-import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const AccountPage = () => {
+  const { t, language } = useLanguage();
   const [isTwoFactorEnabled, setIsTwoFactorEnabled] = useState(false);
 
   const handleDisable2FA = async () => {
@@ -18,15 +20,17 @@ const AccountPage = () => {
     setIsTwoFactorEnabled(true);
   };
 
+  const accountTranslations = translations[language].account;
+
   return (
     <div className="container mx-auto py-8 max-w-4xl">
       <div className="space-y-8">
         <div>
           <h1 className="text-3xl font-bold mb-2">
-            {ACCOUNT_MESSAGES.page.title}
+            {t(accountTranslations, "page.title")}
           </h1>
           <p className="text-muted-foreground">
-            {ACCOUNT_MESSAGES.page.description}
+            {t(accountTranslations, "page.description")}
           </p>
         </div>
 
@@ -36,7 +40,6 @@ const AccountPage = () => {
           isEnabled={isTwoFactorEnabled}
           onDisable={handleDisable2FA}
           onEnable={handleEnable2FA}
-          learnMoreUrl={ACCOUNT_MESSAGES.twoFactor.learnMoreUrl}
         />
       </div>
     </div>

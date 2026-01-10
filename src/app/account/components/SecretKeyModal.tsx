@@ -8,8 +8,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
 import { useCopyToClipboard } from "@/app/hooks/useCopyToClipboard";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface SecretKeyModalProps {
   open: boolean;
@@ -30,11 +31,16 @@ export default function SecretKeyModal({
   onOpenChange,
   secret,
 }: SecretKeyModalProps) {
+  const { t, language } = useLanguage();
+  const accountTranslations = translations[language].account;
   const formattedSecret = formatSecretKey(secret);
   const { isCopied, handleCopy } = useCopyToClipboard({
     text: secret,
-    successMessage: ACCOUNT_MESSAGES.twoFactor.secretKeyModal.copySuccess,
-    errorMessage: ACCOUNT_MESSAGES.twoFactor.secretKeyModal.copyError,
+    successMessage: t(
+      accountTranslations,
+      "twoFactor.secretKeyModal.copySuccess"
+    ),
+    errorMessage: t(accountTranslations, "twoFactor.secretKeyModal.copyError"),
   });
 
   return (
@@ -42,7 +48,7 @@ export default function SecretKeyModal({
       <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle>
-            {ACCOUNT_MESSAGES.twoFactor.secretKeyModal.title}
+            {t(accountTranslations, "twoFactor.secretKeyModal.title")}
           </DialogTitle>
         </DialogHeader>
         <div className="space-y-4">
@@ -58,7 +64,7 @@ export default function SecretKeyModal({
             </code>
           </div>
           <DialogDescription>
-            {ACCOUNT_MESSAGES.twoFactor.secretKeyModal.description}
+            {t(accountTranslations, "twoFactor.secretKeyModal.description")}
           </DialogDescription>
         </div>
       </DialogContent>

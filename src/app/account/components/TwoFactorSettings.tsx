@@ -2,7 +2,8 @@
 
 import TwoFactorEnabledSettings from "./TwoFactorEnabledSettings";
 import TwoFactorDisabledSettings from "./TwoFactorDisabledSettings";
-import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface TwoFactorSettingsProps {
   isEnabled?: boolean;
@@ -19,13 +20,16 @@ export default function TwoFactorSettings({
   secret = "JBSWY3DPEHPK3PXP",
   onDisable,
   onEnable,
-  learnMoreUrl = ACCOUNT_MESSAGES.twoFactor.learnMoreUrl,
+  learnMoreUrl,
 }: TwoFactorSettingsProps) {
+  const { language } = useLanguage();
+  const accountTranslations = translations[language].account;
+  const defaultLearnMoreUrl = accountTranslations.twoFactor.learnMoreUrl;
   if (isEnabled) {
     return (
       <TwoFactorEnabledSettings
         onDisable={onDisable}
-        learnMoreUrl={learnMoreUrl}
+        learnMoreUrl={learnMoreUrl || defaultLearnMoreUrl}
       />
     );
   }
@@ -35,7 +39,7 @@ export default function TwoFactorSettings({
       qrCodeValue={qrCodeValue}
       secret={secret}
       onEnable={onEnable}
-      learnMoreUrl={learnMoreUrl}
+      learnMoreUrl={learnMoreUrl || defaultLearnMoreUrl}
     />
   );
 }

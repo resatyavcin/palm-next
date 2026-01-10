@@ -3,8 +3,8 @@
 import { FormFieldOTP } from "../../../../components/feature/auth/FormFieldOTP";
 import { useTwoFactorVerifyForm } from "../../../../components/feature/auth/form/hooks/useTwoFactorVerifyForm";
 import { Button } from "@/components/ui/button";
-import { AUTH_MESSAGES } from "@/app/constants/messages";
-import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface Verify2FAFormProps {
   onSubmit: (data: { code: string }) => Promise<void>;
@@ -15,6 +15,9 @@ export default function Verify2FAForm({
   onSubmit,
   isSubmitting = false,
 }: Verify2FAFormProps) {
+  const { t, language } = useLanguage();
+  const authTranslations = translations[language].auth;
+  const accountTranslations = translations[language].account;
   const verifyForm = useTwoFactorVerifyForm();
 
   const handleSubmit = verifyForm.handleSubmit(async (data) => {
@@ -25,7 +28,7 @@ export default function Verify2FAForm({
     <form onSubmit={handleSubmit} className="space-y-4">
       <FormFieldOTP
         id="verify-code"
-        label={AUTH_MESSAGES.fields.verificationCode.label}
+        label={t(authTranslations, "fields.verificationCode.label")}
         name="code"
         control={verifyForm.control}
         error={verifyForm.formState.errors.code}
@@ -39,8 +42,8 @@ export default function Verify2FAForm({
           className="w-full sm:w-auto"
         >
           {isSubmitting || verifyForm.formState.isSubmitting
-            ? ACCOUNT_MESSAGES.twoFactor.forms.verify.submitting
-            : ACCOUNT_MESSAGES.twoFactor.forms.verify.button}
+            ? t(accountTranslations, "twoFactor.forms.verify.submitting")
+            : t(accountTranslations, "twoFactor.forms.verify.button")}
         </Button>
       </div>
     </form>

@@ -4,7 +4,8 @@ import { FormField } from "@/components/feature/auth/FormField";
 import { useChangePasswordForm } from "../hooks/useChangePasswordForm";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface ChangePasswordFormProps {
   onSubmit: (data: {
@@ -19,7 +20,9 @@ export default function ChangePasswordForm({
   onSubmit,
   isSubmitting = false,
 }: ChangePasswordFormProps) {
+  const { t, language } = useLanguage();
   const changePasswordForm = useChangePasswordForm();
+  const accountTranslations = translations[language].account;
 
   const handleSubmit = changePasswordForm.handleSubmit(async (data) => {
     await onSubmit(data);
@@ -32,31 +35,40 @@ export default function ChangePasswordForm({
     <form onSubmit={handleSubmit} className="space-y-4">
       <FormField
         id="current-password"
-        label={ACCOUNT_MESSAGES.passwordChange.forms.currentPassword.label}
+        label={t(
+          accountTranslations,
+          "passwordChange.forms.currentPassword.label"
+        )}
         type="password"
-        placeholder={
-          ACCOUNT_MESSAGES.passwordChange.forms.currentPassword.placeholder
-        }
+        placeholder={t(
+          accountTranslations,
+          "passwordChange.forms.currentPassword.placeholder"
+        )}
         register={changePasswordForm.register("currentPassword")}
         error={changePasswordForm.formState.errors.currentPassword}
       />
       <FormField
         id="new-password"
-        label={ACCOUNT_MESSAGES.passwordChange.forms.newPassword.label}
+        label={t(accountTranslations, "passwordChange.forms.newPassword.label")}
         type="password"
-        placeholder={
-          ACCOUNT_MESSAGES.passwordChange.forms.newPassword.placeholder
-        }
+        placeholder={t(
+          accountTranslations,
+          "passwordChange.forms.newPassword.placeholder"
+        )}
         register={changePasswordForm.register("newPassword")}
         error={changePasswordForm.formState.errors.newPassword}
       />
       <FormField
         id="confirm-new-password"
-        label={ACCOUNT_MESSAGES.passwordChange.forms.confirmNewPassword.label}
+        label={t(
+          accountTranslations,
+          "passwordChange.forms.confirmNewPassword.label"
+        )}
         type="password"
-        placeholder={
-          ACCOUNT_MESSAGES.passwordChange.forms.confirmNewPassword.placeholder
-        }
+        placeholder={t(
+          accountTranslations,
+          "passwordChange.forms.confirmNewPassword.placeholder"
+        )}
         register={changePasswordForm.register("confirmNewPassword")}
         error={changePasswordForm.formState.errors.confirmNewPassword}
       />
@@ -72,8 +84,8 @@ export default function ChangePasswordForm({
           )}
         >
           {isSubmitting
-            ? ACCOUNT_MESSAGES.passwordChange.forms.submitting
-            : ACCOUNT_MESSAGES.passwordChange.forms.button}
+            ? t(accountTranslations, "passwordChange.forms.submitting")
+            : t(accountTranslations, "passwordChange.forms.button")}
         </Button>
       </div>
     </form>

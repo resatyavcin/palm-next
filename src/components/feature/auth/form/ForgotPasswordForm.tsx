@@ -3,12 +3,15 @@
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { useForgotPasswordForm } from "./hooks/useForgotPasswordForm";
 import { FormField } from "../FormField";
-import { AUTH_MESSAGES } from "@/app/constants/messages";
 import { SubmitButton } from "../../../SubmitButton";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/app/constants/routes";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function ForgotPasswordForm() {
+  const { t, language } = useLanguage();
+  const authTranslations = translations[language].auth;
   const {
     register,
     handleSubmit,
@@ -29,9 +32,9 @@ export default function ForgotPasswordForm() {
         <div className="flex flex-col gap-6">
           <FormField
             id="email"
-            label={AUTH_MESSAGES.fields.email.label}
+            label={t(authTranslations, "fields.email.label")}
             type="email"
-            placeholder={AUTH_MESSAGES.fields.email.placeholder}
+            placeholder={t(authTranslations, "fields.email.placeholder")}
             register={register("email")}
             error={errors.email}
           />
@@ -41,9 +44,9 @@ export default function ForgotPasswordForm() {
         <SubmitButton
           className="w-full"
           isLoading={isSubmitting}
-          loadingText={AUTH_MESSAGES.buttons.forgotPassword.submitting}
+          loadingText={t(authTranslations, "buttons.forgotPassword.submitting")}
         >
-          {AUTH_MESSAGES.buttons.forgotPassword.default}
+          {t(authTranslations, "buttons.forgotPassword.default")}
         </SubmitButton>
       </CardFooter>
     </form>

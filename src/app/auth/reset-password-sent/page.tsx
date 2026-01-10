@@ -1,14 +1,20 @@
+"use client";
+
 import SuccessCardComponent from "@/components/SuccessCard";
-import { AUTH_MESSAGES } from "@/app/constants/messages";
 import { ROUTES } from "@/app/constants/routes";
 import { LinkButton } from "@/components/LinkButton";
+import { useLanguage } from "@/lib/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function ResetPasswordSentPage() {
+  const { t, language } = useLanguage();
+  const authTranslations = translations[language].auth;
+
   return (
     <SuccessCardComponent
-      title={AUTH_MESSAGES.pages.resetPasswordSent.title}
-      description={AUTH_MESSAGES.pages.resetPasswordSent.description}
-      extraInfo={AUTH_MESSAGES.helpers.resetPasswordSent.noEmailReceived}
+      title={t(authTranslations, "pages.resetPasswordSent.title")}
+      description={t(authTranslations, "pages.resetPasswordSent.description")}
+      extraInfo={t(authTranslations, "helpers.resetPasswordSent.noEmailReceived")}
       actions={
         <>
           <LinkButton
@@ -16,14 +22,14 @@ export default function ResetPasswordSentPage() {
             variant="default"
             className="w-full"
           >
-            {AUTH_MESSAGES.links.backToLogin}
+            {t(authTranslations, "links.backToLogin")}
           </LinkButton>
           <LinkButton
             variant="outline"
             href={ROUTES.AUTH_FORGOT_PASSWORD}
             className="w-full"
           >
-            {AUTH_MESSAGES.links.resendLink}
+            {t(authTranslations, "links.resendLink")}
           </LinkButton>
         </>
       }
