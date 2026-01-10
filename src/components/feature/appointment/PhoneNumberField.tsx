@@ -5,7 +5,7 @@ import { Control, Controller, FieldError } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { AppointmentFormData } from "../validation/appointment.schema";
+import { AppointmentFormData } from "@/components/feature/appointment/form/validation/appointment.schema";
 
 interface PhoneNumberFieldProps {
   id: string;

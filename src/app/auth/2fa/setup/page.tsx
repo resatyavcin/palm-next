@@ -2,7 +2,7 @@ import FormCardComponent from "@/components/feature/auth/FormCard";
 import TwoFactorSetup from "@/components/feature/auth/form/TwoFactorSetupForm";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
-import { LinkButton } from "@/components/feature/auth/LinkButton";
+import { LinkButton } from "@/components/LinkButton";
 
 // This would normally come from your backend/API
 // For demo purposes, we're using a sample QR code value

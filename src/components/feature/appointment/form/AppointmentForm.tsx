@@ -1,9 +1,9 @@
 "use client";
 
 import { FormField } from "@/components/feature/auth/FormField";
-import { SubmitButton } from "@/components/feature/auth/SubmitButton";
+import { SubmitButton } from "@/components/SubmitButton";
 import { useAppointmentForm } from "./hooks/useAppointmentForm";
-import { PhoneNumberField } from "./components/PhoneNumberField";
+import { PhoneNumberField } from "@/components/feature/appointment/PhoneNumberField";
 
 type AppointmentFormProps = {
   onSubmit: (data: { fullName: string; phoneNumber: string }) => void;

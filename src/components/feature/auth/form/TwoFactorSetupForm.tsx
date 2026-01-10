@@ -4,7 +4,7 @@ import QRCodeSVG from "react-qr-code";
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
-import { LinkButton } from "../LinkButton";
+import { LinkButton } from "../../../LinkButton";
 
 interface TwoFactorSetupFormProps {
   qrCodeValue: string;

@@ -8,9 +8,9 @@ import { ScissorsIcon, ArrowLeftRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import DateHourPicker from "./DateHourPickerComponent";
-import AppointmentForm from "./AppointmentForm";
-import SuccessCardComponent from "@/components/feature/auth/SuccessCard";
+import DateHourPicker from "@/components/feature/appointment/DateHourPickerComponent";
+import AppointmentForm from "@/components/feature/appointment/form/AppointmentForm";
+import SuccessCardComponent from "@/components/SuccessCard";
 
 /* ------------------ TYPES ------------------ */
 export type Employee = {

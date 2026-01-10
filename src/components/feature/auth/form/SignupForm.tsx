@@ -4,7 +4,7 @@ import { CardContent, CardFooter } from "@/components/ui/card";
 import { useSignupForm } from "./hooks/useSignupForm";
 import { FormField } from "../FormField";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
-import { SubmitButton } from "../SubmitButton";
+import { SubmitButton } from "../../../SubmitButton";
 import { useRegister } from "@/lib/hooks/useAuth";
 
 export default function SignupForm() {

@@ -1,7 +1,7 @@
-import SuccessCardComponent from "@/components/feature/auth/SuccessCard";
+import SuccessCardComponent from "@/components/SuccessCard";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
 import { AUTH_ROUTES } from "@/app/constants/routes";
-import { LinkButton } from "@/components/feature/auth/LinkButton";
+import { LinkButton } from "@/components/LinkButton";
 
 export default function ResetPasswordSentPage() {
   return (

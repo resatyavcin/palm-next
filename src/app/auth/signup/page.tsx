@@ -2,7 +2,7 @@ import FormCardComponent from "@/components/feature/auth/FormCard";
 import SignupForm from "@/components/feature/auth/form/SignupForm";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
-import { LinkButton } from "@/components/feature/auth/LinkButton";
+import { LinkButton } from "@/components/LinkButton";
 
 export default function SignupPage() {
   return (

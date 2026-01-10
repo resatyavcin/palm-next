@@ -6,7 +6,7 @@ import { useSigninForm } from "./hooks/useSigninForm";
 import { FormField } from "../FormField";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import { AUTH_MESSAGES } from "@/app/constants/messages";
-import { SubmitButton } from "../SubmitButton";
+import { SubmitButton } from "../../../SubmitButton";
 import { useLogin } from "@/lib/hooks/useAuth";
 
 export default function SigninForm() {
