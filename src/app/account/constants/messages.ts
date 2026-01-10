@@ -64,4 +64,28 @@ export const ACCOUNT_MESSAGES = {
     learnMoreUrl:
       "https://www.youtube.com/watch?v=0mvCeNsTa1g&feature=youtu.be",
   },
+
+  // Password change
+  passwordChange: {
+    title: "Change password",
+    description: "Update your account password to keep your account secure",
+    success: "Password changed successfully",
+    error: "Failed to change password. Please try again.",
+    forms: {
+      currentPassword: {
+        label: "Current password",
+        placeholder: "Enter your current password",
+      },
+      newPassword: {
+        label: "New password",
+        placeholder: "Enter your new password",
+      },
+      confirmNewPassword: {
+        label: "Confirm new password",
+        placeholder: "Confirm your new password",
+      },
+      button: "Change password",
+      submitting: "Changing password...",
+    },
+  },
 } as const;

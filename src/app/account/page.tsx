@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import TwoFactorSettings from "@/app/account/components/TwoFactorSettings";
+import ChangePasswordSettings from "@/app/account/components/ChangePasswordSettings";
 import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
 
 const AccountPage = () => {
@@ -28,6 +29,8 @@ const AccountPage = () => {
             {ACCOUNT_MESSAGES.page.description}
           </p>
         </div>
+
+        <ChangePasswordSettings />
 
         <TwoFactorSettings
           isEnabled={isTwoFactorEnabled}
