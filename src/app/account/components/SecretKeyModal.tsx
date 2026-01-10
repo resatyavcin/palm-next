@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -11,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { ACCOUNT_MESSAGES } from "@/app/account/constants/messages";
+import { useCopyToClipboard } from "@/app/hooks/useCopyToClipboard";
 
 interface SecretKeyModalProps {
   open: boolean;
@@ -32,20 +31,11 @@ export default function SecretKeyModal({
   secret,
 }: SecretKeyModalProps) {
   const formattedSecret = formatSecretKey(secret);
-  const [isCopied, setIsCopied] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      // Copy original secret (without formatting) to clipboard
-      await navigator.clipboard.writeText(secret);
-      setIsCopied(true);
-      toast.success(ACCOUNT_MESSAGES.twoFactor.secretKeyModal.copySuccess);
-      setTimeout(() => setIsCopied(false), 2000);
-    } catch (error) {
-      toast.error(ACCOUNT_MESSAGES.twoFactor.secretKeyModal.copyError);
-      console.error("Failed to copy:", error);
-    }
-  };
+  const { isCopied, handleCopy } = useCopyToClipboard({
+    text: secret,
+    successMessage: ACCOUNT_MESSAGES.twoFactor.secretKeyModal.copySuccess,
+    errorMessage: ACCOUNT_MESSAGES.twoFactor.secretKeyModal.copyError,
+  });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
