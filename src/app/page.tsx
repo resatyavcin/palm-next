@@ -1,11 +1,17 @@
 "use client";
-import { useEffect } from "react";
-import { toast } from "sonner";
+
+import { LinkButton } from "@/components/LinkButton";
+import { APP_ROUTES } from "./constants/routes";
+import { ACCOUNT_MESSAGES } from "./account/constants/messages";
 
 export default function HomePage() {
-  useEffect(() => {
-    toast.success("Event has been created.");
-  }, []);
+  return (
+    <div>
+      <LinkButton href={APP_ROUTES.account}>
+        {ACCOUNT_MESSAGES.links.account}
+      </LinkButton>
 
-  return <div>Home</div>;
+      <LinkButton href={APP_ROUTES.logout}>Logout</LinkButton>
+    </div>
+  );
 }

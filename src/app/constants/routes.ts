@@ -8,3 +8,11 @@ export const AUTH_ROUTES = {
 } as const;
 
 export type AuthRoute = (typeof AUTH_ROUTES)[keyof typeof AUTH_ROUTES];
+
+export const APP_ROUTES = {
+  account: "/account",
+  home: "/",
+  logout: "/auth/signin",
+} as const;
+
+export type AppRoute = (typeof APP_ROUTES)[keyof typeof APP_ROUTES];
